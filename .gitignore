@@ -1,0 +1,27 @@
+# Authentication - contains API keys
+auth.json
+
+# Sessions - machine-specific history
+sessions/
+
+# Cache and temp files
+*.cache
+*.tmp
+*.log
+
+# Node modules (if using local npm packages)
+npm/
+node_modules/
+
+# Git packages (reinstall via pi install)
+git/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo

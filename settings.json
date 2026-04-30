@@ -1,6 +1,0 @@
-{
-  "lastChangelogVersion": "0.70.5",
-  "defaultProvider": "openrouter",
-  "defaultModel": "qwen/qwen3.5-397b-a17b",
-  "defaultThinkingLevel": "medium"
-}

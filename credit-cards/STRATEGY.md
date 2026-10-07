@@ -14,13 +14,26 @@ Offers change; re-read the issuer page on the day you apply (see "Before each ap
 - Recommended sequence, one card at a time, about 3-4 months apart:
   1. **Chase Freedom Flex** ($250, limited-time offer; $0 fee).
   2. **Citi Double Cash** ($200 after $1,500 in 6 months; flat 2%).
-  3. Then whichever of **Capital One Savor** ($200), **Bank of America Customized Cash Rewards** ($200)
+  3. **Chase Freedom Unlimited** ($200), still before your 5th new card so Chase's reported 5/24 limit is not a problem.
+  4. Then whichever of **Capital One Savor** ($200), **Bank of America Customized Cash Rewards** ($200)
      the pre-qualification checks say you can get, strongest first.
-  4. **Wells Fargo Active Cash** ($100) last, or skip. It is the weakest bonus.
+  5. **Wells Fargo Active Cash** ($100) last, or skip. It is the weakest bonus.
+  Stop at any point. The first two cards are about 60% of the value.
+- **Discover it Cash Back** is the fallback and the credit-builder, not a sequence step. It has no minimum spend and
+  matches all first-year cash back dollar for dollar, which is worth about $120 on $6,000 at its 1% base
+  (more if the rotating 5% categories fit; its quarterly cap is not on its page). That is under every $200 bonus,
+  and spend moved onto it is spend not earning a bonus. Use it if the other issuers decline you.
 - The order is a default, not a promise. Which cards you can actually get at about a 690 score is the largest
   unknown, so the first action is a same-day round of soft-pull pre-qualification checks (below).
-- Expected value: about $1,100 over 15 months if every application is approved, and about $700 under
-  deliberately pessimistic approval odds (`cardtool.py plan`). Treat these as modelled, not promised.
+- Expected value (`python3 -I cardtool.py plan --monthly-spend 500`): about $1,340 over 18 months if all six
+  applications are approved, and about $725 with the illustrative approval odds in `cardtool.py`
+  (`--pessimistic`: 60% Flex/Citi/BofA, 50% Unlimited, 30% Savor, 70% Wells Fargo). Those odds are my guesses;
+  issuers publish none. A denied application is valued at $0 because you have no other card to earn on.
+  The cash-back part uses an assumed spending mix. Treat these as modelled, not promised.
+- All of this assumes you can put the whole $500/month of non-rent spending on a card. Confirm that first:
+  list the recurring bills (phone, insurance, utilities, subscriptions) and check that each accepts a card
+  without a surcharge. If only half can go on a card, the 3-month minimums become 6-month ones and the Citi
+  minimum ($1,500) needs the full 6-month window.
 
 ## Verified facts (all from issuer pages read 2026-10-07)
 
@@ -28,7 +41,7 @@ Offers change; re-read the issuer page on the day you apply (see "Before each ap
 |---|---|---|---|---|---|
 | Chase Freedom Flex | $250 (limited-time; page shows $200 struck out) | $500 / 3 months | 5% rotating on up to $1,500/qtr (activate), 3% dining + drugstores, 1% else | $0 | 24 months |
 | Chase Freedom Unlimited | $200 | $500 / 3 months | 1.5%, 3% dining + drugstores | $0 | 24 months |
-| Citi Double Cash | $200 | $1,500 / 6 months | 1% when you buy + 1% as you pay | $0 | 48 months |
+| Citi Double Cash | $200 (paid as ThankYou points) | $1,500 / 6 months | 1% when you buy + 1% as you pay | $0 | 48 months |
 | Capital One Savor | $200 | $500 / 3 months | 3% groceries (not Walmart/Target), dining, entertainment, streaming; 1% else | $0 | 48 months |
 | Capital One Quicksilver | $200 | $500 / 3 months | 1.5% | $0 | 48 months |
 | BofA Customized Cash Rewards | $200 | $1,000 / 90 days | 6% first year (3% after) in a chosen category + 2% grocery/wholesale, combined $2,500/qtr cap; 1% else | $0 | not on page |
@@ -49,16 +62,23 @@ activation required (activation opened Sept 15). Q1 2027: groceries and streamin
   versions that show no cash bonus, and fair-credit versions with a $39 annual fee. At about 690 you may be
   offered a version without the $200 bonus. Do not take a card without a bonus, and do not pay a $39 fee.
 - Citi's "2%" is 1% when you buy and 1% as you pay. It is 2% only if you actually pay the bill.
+  Its $200 bonus is paid as ThankYou points, redeemable for cash back per its page.
+- Several cards advertise 0% intro APR for 12-18 months. That is not a reason to carry a balance; the APR after the
+  intro period is 17.74%-28.74%.
 
 ## Why this order
 
 1. **Chase first.** The Chase "5/24" rule (denied if 5+ cards opened in 24 months) is only reported by third
    parties (`chase.5-24`, secondary; Chase does not publish it). You have no cards, so you are at 0/24 now.
-   This plan opens 5 cards in about 15 months, so apply to Chase before the others and do not plan on another Chase card afterwards.
+   This plan opens up to 6 cards in about 18 months. Chase's two cards are therefore placed 1st and 3rd,
+   when you are at about 0-2 of 24. After the 5th new card, assume Chase will decline you for a while.
    The Flex has the highest verified bonus ($250) and it is limited-time, so it goes first.
-   Its Q4 5% categories (groceries, dining) are likely to match everyday spending.
-2. **Citi second.** Flat 2% (if you pay), $0 fee, only needs $1,500 in 6 months. It is the best default card for
-   everything else, and every spend not needed for a bonus should go on it.
+   Its Q4 2026 5% categories are groceries and dining (up to $1,500, activation required). That only helps
+   this quarter if you are approved and activate before Dec 31; otherwise Q1 2027 has groceries and streaming.
+   Chase's own pages say you can get the Unlimited bonus even if you hold the Flex (the restriction is per card, 24 months).
+2. **Citi second.** Flat 2% (if you pay), $0 fee. The $1,500 minimum is 100% of three months of your spending;
+   the 6-month window is what makes it comfortable. The tracker's 15% buffer would be $1,725, about 3.5 months.
+   Every dollar not needed for another bonus should go on it.
 3. **Savor / BofA next, by pre-qualification result.** Both $200. Savor is easier to hit ($500) but sits in
    Capital One's Excellent tier. BofA needs $1,000 in 90 days and gives 6% in one chosen category for a year
    plus 2% groceries, which is the best category rate here if the spend matches.
@@ -99,17 +119,23 @@ Issuers' unpublished velocity rules (BofA 2/3/4 is secondary-reported) are also 
 
 ## Automation (built, partly untested)
 
+- `test_tracker.py` runs the tracker against a local mock of the SimpleFIN API (multi-window fetch, repeat syncs,
+  credentials, classification). Run `python3 -I test_tracker.py`.
 - `tracker.py status` reads `tracker.json` (card, open date, status) and `claims.json` (min spend, window), and prints
   progress, window end, and the monthly spend needed with a 15% buffer. Tested on mock data.
-- `tracker.py sync` pulls card transactions from SimpleFIN Bridge and updates spend totals. The parsing is tested
-  on mock transactions; the live API call is **untested** (no Access URL exists yet).
-  SimpleFIN facts read from its own docs (2026-10-07): $1.50/month or $15/year; setup token -> POST claim -> Access URL;
-  at most 90 days per request; about 24 requests/day. Its institution search lists Chase, Citi, Capital One, Bank of America,
+- `tracker.py sync` pulls card transactions from SimpleFIN Bridge, de-duplicates by transaction id in a local
+  gitignored file, and updates spend totals only inside each card's bonus window. Tested against a mock server
+  built from SimpleFIN's documentation; the live API call is **untested** (no Access URL exists yet).
+  Its totals are estimates: it ignores payments, fees, interest and pending items, and treats unrecognised credits
+  as refunds. It prints a `review:` line for any large credit it ignored or subtracted. The issuer's statement wins.
+  SimpleFIN facts are now `primary_verified` in `claims.json` (saved pages in `evidence/`): $1.50/month or $15/year;
+  setup token -> POST claim -> Access URL; at most 90 days per request; about 24 requests/day. Its institution search lists Chase, Citi, Capital One, Bank of America,
   Wells Fargo, Discover, and one "Founders Federal Credit Union" (state unconfirmed). A listing does not prove
   the card feed works. Founders is only needed for the debit account; card tracking does not require it.
 - The Access URL is a secret: keep it in an environment variable or secret store, never in git.
 - Zero-cost alternative that needs no integration: each issuer's own app shows spend toward the bonus; the tracker
   then only needs open dates. This is the lowest-risk option if SimpleFIN fails for a card.
+- Longer-term plan for tracking and the rest of the finance project: see `ROADMAP.md`.
 - Not set up: a scheduled monthly reminder. It needs a decision from the user (it creates a recurring cloud run).
 
 ## Open items and what is not verified
@@ -122,3 +148,6 @@ Issuers' unpublished velocity rules (BofA 2/3/4 is secondary-reported) are also 
 - Discover's quarterly 5% cap is not on its page.
 - Whether SimpleFIN returns usable data for each card; Founders FCU card options; Plaid coverage.
 - Tax treatment of bonuses: not researched.
+- What `cardtool.py validate` proves: each quote exists in a saved page, and each number in a claim appears in its quote.
+  It cannot prove the quote is the right sentence. An independent reviewer re-fetched 8 issuer pages on 2026-10-07 and
+  every figure in the table matched.

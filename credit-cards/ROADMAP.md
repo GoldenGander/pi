@@ -43,7 +43,8 @@ Decisions that need the user, listed once so nothing blocks silently:
 ## Phases
 
 ### Phase 0: Foundations (DONE)
-Provenance ledger and validator; EV calculator; bonus tracker with mock-tested parsing.
+Provenance ledger and validator (quotes and numbers checked against saved pages); EV calculator; bonus tracker
+with a mock-SimpleFIN test suite; independent review done.
 Exit: `cardtool.py validate` passes; every number in `STRATEGY.md` traces to a quote.
 
 ### Phase 1: Card bonuses (NOW)

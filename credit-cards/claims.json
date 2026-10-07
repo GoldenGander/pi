@@ -129,8 +129,11 @@
       "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
       "retrieved": "2026-10-07",
       "evidence_file": "evidence/chase_freedom_unlimited.txt",
-      "quote": "Earn 3% on dining at restaurants, including takeout and eligible delivery services.*",
-      "notes": "1.5% on all other purchases: see chase-unlimited.base-quote."
+      "quote": [
+        "Earn 3% on dining at restaurants, including takeout and eligible delivery services.*",
+        "Earn 1.5% on all other purchases.*"
+      ],
+      "notes": "Drugstores also 3% (separate line on page)."
     },
     {
       "id": "chase-unlimited.base-quote",
@@ -197,7 +200,7 @@
       "source_url": "https://creditcards.wellsfargo.com/active-cash-credit-card/",
       "retrieved": "2026-10-07",
       "evidence_file": "evidence/wells_fargo_active_cash.txt",
-      "quote": "$0 annual fee"
+      "quote": "$0 annual fee Important credit terms"
     },
     {
       "id": "wf-active-cash.eligibility",
@@ -252,7 +255,10 @@
       "source_url": "https://www.citi.com/credit-cards/citi-double-cash-credit-card",
       "retrieved": "2026-10-07",
       "evidence_file": "evidence/citi_double_cash.txt",
-      "quote": "Earn unlimited 1% cash back when you buy, plus an additional 1% as you pay, on every purchase.",
+      "quote": [
+        "Earn unlimited 1% cash back when you buy, plus an additional 1% as you pay, on every purchase.",
+        "Unlimited 2% cash back on purchases"
+      ],
       "notes": "The second 1% is earned as you pay the bill; effectively 2% only if you pay."
     },
     {
@@ -265,7 +271,7 @@
       "source_url": "https://www.citi.com/credit-cards/citi-double-cash-credit-card",
       "retrieved": "2026-10-07",
       "evidence_file": "evidence/citi_double_cash.txt",
-      "quote": "Annual Fee – None."
+      "quote": "Annual Fee – None. Fee for foreign purchases"
     },
     {
       "id": "citi-double-cash.eligibility",
@@ -313,7 +319,10 @@
       "source_url": "https://www.capitalone.com/credit-cards/savor/",
       "retrieved": "2026-10-07",
       "evidence_file": "evidence/capital_one_savor.txt",
-      "quote": "Earn unlimited 3% cash back at grocery stores (excluding superstores like Walmart® and Target®), on dining, entertainment and popular streaming services."
+      "quote": [
+        "Earn unlimited 3% cash back at grocery stores (excluding superstores like Walmart® and Target®), on dining, entertainment and popular streaming services.",
+        "Earn unlimited 1% cash back on all other purchases"
+      ]
     },
     {
       "id": "capone-savor.base-quote",
@@ -337,7 +346,7 @@
       "source_url": "https://www.capitalone.com/credit-cards/savor/",
       "retrieved": "2026-10-07",
       "evidence_file": "evidence/capital_one_savor.txt",
-      "quote": "$0 annual fee"
+      "quote": "from account opening2 $0 annual fee Plus, there are no foreign transaction fees"
     },
     {
       "id": "capone-savor.eligibility",
@@ -378,7 +387,7 @@
       "source_url": "https://www.capitalone.com/credit-cards/quicksilver/",
       "retrieved": "2026-10-07",
       "evidence_file": "evidence/capital_one_quicksilver.txt",
-      "quote": "as a one-time cash bonus once you spend $500 within 3 months from account opening"
+      "quote": "Earn $200 as a one-time cash bonus once you spend $500 within 3 months from account opening"
     },
     {
       "id": "capone-quicksilver.rates",
@@ -404,7 +413,7 @@
       "source_url": "https://www.capitalone.com/credit-cards/quicksilver/",
       "retrieved": "2026-10-07",
       "evidence_file": "evidence/capital_one_quicksilver.txt",
-      "quote": "$0 Annual Fee"
+      "quote": "$0 Annual Fee plus no foreign transaction fees"
     },
     {
       "id": "capone-quicksilver.eligibility",
@@ -514,7 +523,7 @@
       "source_url": "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/",
       "retrieved": "2026-10-07",
       "evidence_file": "evidence/boa_customized_cash.txt",
-      "quote": "No annual fee"
+      "quote": "No annual fee† Review rates and fees†"
     },
     {
       "id": "discover-it.match",
@@ -548,7 +557,10 @@
       "source_url": "https://www.discover.com/credit-cards/cash-back/it-card/",
       "retrieved": "2026-10-07",
       "evidence_file": "evidence/discover_it_cash_back.txt",
-      "quote": "Earn 5% cash back on everyday purchases at different places you shop each quarter, up to the quarterly maximum when you activate.",
+      "quote": [
+        "Earn 5% cash back on everyday purchases at different places you shop each quarter, up to the quarterly maximum when you activate.",
+        "Plus, earn 1% cash back on all other purchases."
+      ],
       "notes": "The page does not state the quarterly maximum; Discover's usual $1,500 is UNVERIFIED."
     },
     {
@@ -573,7 +585,7 @@
       "source_url": "https://www.discover.com/credit-cards/cash-back/it-card/",
       "retrieved": "2026-10-07",
       "evidence_file": "evidence/discover_it_cash_back.txt",
-      "quote": "No annual fee"
+      "quote": "No annual fee See rates, rewards, fees, and other cost information"
     },
     {
       "id": "discover-it.credit-tier",
@@ -652,22 +664,96 @@
     {
       "id": "simplefin.price",
       "card": "SimpleFIN Bridge",
-      "field": "price_per_month_usd",
-      "value": 1.5,
-      "status": "secondary_reported",
-      "evidence": "search_summary",
-      "source_url": "https://github.com/duplaja/actual-simplefin-sync",
-      "retrieved": "2026-10-07"
+      "field": "price_usd",
+      "value": {
+        "per_month": 1.5,
+        "per_year": 15.0
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://beta-bridge.simplefin.org/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/simplefin_home.txt",
+      "quote": [
+        "$1.50 + tax per month, or",
+        "$15.00 + tax per year"
+      ]
     },
     {
-      "id": "simplefin.api",
+      "id": "simplefin.claim",
       "card": "SimpleFIN Bridge",
-      "field": "protocol_details",
-      "value": "Setup token -> claim URL -> Access URL with basic auth; GET /accounts with start-date/end-date; ~90 days history; ~24 requests/day.",
-      "status": "unsourced",
-      "evidence": "none",
-      "source_url": null,
-      "notes": "From model memory. Verify against the SimpleFIN protocol docs before writing the sync script."
+      "field": "claim_flow",
+      "value": "Setup token is base64 of a claim URL; POST to it (Content-Length: 0) returns the Access URL (Basic Auth credentials inside).",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://beta-bridge.simplefin.org/info/developers",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/simplefin_developers.txt",
+      "quote": "base64-decode the token to get a URL, then issue a POST to that URL."
+    },
+    {
+      "id": "simplefin.accounts-params",
+      "card": "SimpleFIN Bridge",
+      "field": "accounts_endpoint",
+      "value": "GET {ACCESS_URL}/accounts?version=2; start-date inclusive and end-date exclusive (unix epoch); pending=1 includes pending (if supported).",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.simplefin.org/protocol.html",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/simplefin_protocol.txt",
+      "quote": [
+        "If given, transactions will be restricted to those on or after this Unix epoch timestamp.",
+        "If given, transactions will be restricted to those before (but not on) this Unix epoch timestamp."
+      ],
+      "notes": "The version=2 parameter appears in the developers page example: see simplefin.version."
+    },
+    {
+      "id": "simplefin.version",
+      "card": "SimpleFIN Bridge",
+      "field": "accounts_version_param",
+      "value": "version=2",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://beta-bridge.simplefin.org/info/developers",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/simplefin_developers.txt",
+      "quote": "curl -L \"${ACCESS_URL}/accounts?version=2\""
+    },
+    {
+      "id": "simplefin.limit-requests",
+      "card": "SimpleFIN Bridge",
+      "field": "daily_request_limit",
+      "value": 24,
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://beta-bridge.simplefin.org/info/developers",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/simplefin_developers.txt",
+      "quote": "you are expected to make 24 requests or fewer per day."
+    },
+    {
+      "id": "simplefin.limit-range",
+      "card": "SimpleFIN Bridge",
+      "field": "max_range_days",
+      "value": 90,
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://beta-bridge.simplefin.org/info/developers",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/simplefin_developers.txt",
+      "quote": "limited to 90 days at a time."
+    },
+    {
+      "id": "simplefin.txn-fields",
+      "card": "SimpleFIN Bridge",
+      "field": "transaction_fields",
+      "value": "posted is a unix timestamp and may be 0 if pending; pending=true means not yet posted.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.simplefin.org/protocol.html",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/simplefin_protocol.txt",
+      "quote": "If the transaction is pending, this may be 0."
     }
   ]
 }

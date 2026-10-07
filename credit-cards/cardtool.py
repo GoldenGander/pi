@@ -18,7 +18,7 @@ from urllib.parse import urlparse
 
 LEDGER = Path(__file__).with_name("claims.json")
 ISSUER_DOMAINS = (
-    "wellsfargo.com", "chase.com", "bankofamerica.com", "citi.com", "capitalone.com", "discover.com",
+    "wellsfargo.com", "chase.com", "bankofamerica.com", "citi.com", "capitalone.com", "discover.com", "simplefin.org",
 )
 STATUSES = {"primary_verified", "secondary_reported", "conflicting", "unsourced"}
 
@@ -64,16 +64,57 @@ def norm(t):
     return " ".join(t.split())
 
 
+def quotes_of(c):
+    q = c.get("quote")
+    return [q] if isinstance(q, str) else list(q or [])
+
+
+def number_forms(key, n):
+    """Ways the issuer page could print the number n of a claim value."""
+    if key == "window_days":
+        return {f"{n} days", f"{n // 30} months"}
+    if isinstance(n, float) and 0 < n < 1:
+        return {f"{n * 100:g}%"}
+    return {f"${n:,}", f"${n:,.2f}", f"{n:g}"}
+
+
+def numbers_in(value, key=""):
+    if isinstance(value, bool) or value is None or isinstance(value, str):
+        return
+    if isinstance(value, (int, float)):
+        if value != 0:
+            yield key, value
+    elif isinstance(value, dict):
+        for k, v in value.items():
+            yield from numbers_in(v, k)
+    elif isinstance(value, list):
+        for v in value:
+            yield from numbers_in(v, key)
+
+
 def check_quote(c):
+    """Every quote must exist verbatim in the saved page, and every number in `value` must appear in a quote.
+
+    This ties the numbers to the evidence. It cannot prove the quote is the right sentence, so a human
+    or reviewer still has to read the quotes."""
     cid = c["id"]
-    if not c.get("quote") or not c.get("evidence_file"):
+    quotes = quotes_of(c)
+    if not quotes or not c.get("evidence_file"):
         return [f"{cid}: primary_verified requires quote and evidence_file"]
     path = LEDGER.parent / c["evidence_file"]
     if not path.exists():
         return [f"{cid}: evidence_file {c['evidence_file']} missing"]
-    if norm(c["quote"]) not in norm(path.read_text()):
-        return [f"{cid}: quote not found in {c['evidence_file']}"]
-    return []
+    page, errs = norm(path.read_text()), []
+    for q in quotes:
+        if len(norm(q)) < 20:
+            errs.append(f"{cid}: quote too short to be evidence: {q!r}")
+        elif norm(q) not in page:
+            errs.append(f"{cid}: quote not found in {c['evidence_file']}: {q[:50]!r}")
+    text = norm(" ".join(quotes))
+    for key, n in numbers_in(c.get("value")):
+        if not any(f in text for f in number_forms(key, n)):
+            errs.append(f"{cid}: value number {n!r} ({key or 'value'}) does not appear in the quote")
+    return errs
 
 
 def usable(claim, allow_secondary):
@@ -102,8 +143,12 @@ def ev(claims, annual_spend, allow_secondary):
 
 MIX_ASSUMPTION = {"groceries": 0.30, "dining": 0.15, "drugstores": 0.03, "gas": 0.07,
                   "streaming": 0.05, "entertainment": 0.02, "other": 0.38}
-CARD_ORDER_DEFAULT = ["Chase Freedom Flex", "Citi Double Cash", "Capital One Savor",
+CARD_ORDER_DEFAULT = ["Chase Freedom Flex", "Citi Double Cash", "Chase Freedom Unlimited", "Capital One Savor",
                       "Bank of America Customized Cash Rewards", "Wells Fargo Active Cash"]
+# Illustrative approval odds for a thin-file ~690 applicant. NOT sourced: issuers publish none. Used by --pessimistic.
+PESSIMISTIC_P = {"Chase Freedom Flex": 0.6, "Citi Double Cash": 0.6, "Chase Freedom Unlimited": 0.5,
+                 "Capital One Savor": 0.3, "Bank of America Customized Cash Rewards": 0.6,
+                 "Wells Fargo Active Cash": 0.7, "Discover it Cash Back": 0.7}
 
 
 def by_card(claims):
@@ -140,10 +185,9 @@ def phase_rate(card, f, mix, quarter_cap_spend):
 
 def plan(claims, monthly, order, mix, p_approve):
     cards = by_card(claims)
-    fallback = max((c for c in cards if c in ("Citi Double Cash", "Wells Fargo Active Cash")),
-                   key=lambda c: cards[c]["rates"]["value"]["base"])
     print(f"Assumed monthly non-rent spend ${monthly:,.0f}; mix {mix}")
-    print(f"Each new card gets all non-rent spend for 3 months (one quarter); afterwards spend goes to {fallback}.")
+    print("Each new card gets all non-rent spend for 3 months (one quarter). A denied application is valued at $0.")
+    print("Citi's $1,500 minimum equals 100% of 3 months of spend; its 6-month window gives slack.")
     print(f"{'phase':5s} {'card':42s} {'bonus':>6s} {'p':>5s} {'spend':>7s} {'rate':>6s} {'cashback':>9s} {'EV':>7s}")
     total = 0.0
     for i, card in enumerate(order, 1):
@@ -156,14 +200,18 @@ def plan(claims, monthly, order, mix, p_approve):
             q = monthly * 3
             rate = phase_rate(card, f, mix, q)
             cb = q * rate
-            bonus = f["welcome_bonus"]["value"]["amount"]
-            if f["welcome_bonus"]["value"]["min_spend"] > q:
+            bonus = f["welcome_bonus"]["value"].get("amount") or 0
+            if f["welcome_bonus"]["value"].get("min_spend", 0) > q:
                 print(f"  {card}: min spend exceeds 3 months of spend; bonus needs a longer window")
+            if f["welcome_bonus"]["value"].get("type") == "first_year_cashback_match":
+                bonus = cb  # Discover matches first-year cash back; 5% rotating tier not modelled (cap unverified)
             p = p_approve.get(card, 1.0)
-            ev = p * (bonus + cb) + (1 - p) * q * cards[fallback]["rates"]["value"]["base"]
+            # A denied application earns nothing: the user has no other card to put the spend on.
+            ev = p * (bonus + cb)
             total += ev
-            print(f"{i:<5d} {card:42s} {bonus:>6d} {p:>5.2f} {q:>7,.0f} {rate:>6.3f} {cb:>9,.0f} {ev:>7,.0f}")
+            print(f"{i:<5d} {card:42s} {bonus:>6.0f} {p:>5.2f} {q:>7,.0f} {rate:>6.3f} {cb:>9,.0f} {ev:>7,.0f}")
     print(f"Total over {3 * len(order)} months: ${total:,.0f}  (approval p defaults to 1.0 = optimistic)")
+    return total
 
 
 def main():
@@ -178,6 +226,7 @@ def main():
     pl.add_argument("--monthly-spend", type=float, required=True)
     pl.add_argument("--order", default=",".join(CARD_ORDER_DEFAULT))
     pl.add_argument("--mix", default="", help="e.g. groceries=0.3,dining=0.15 (rest = other). Default is an ASSUMED mix.")
+    pl.add_argument("--pessimistic", action="store_true", help="use the illustrative approval odds in PESSIMISTIC_P")
     pl.add_argument("--p", action="append", default=[], help="approval probability, e.g. 'Citi Double Cash=0.7'")
     a = p.parse_args()
 
@@ -198,7 +247,8 @@ def main():
         if a.mix:
             mix = {k: float(v) for k, v in (x.split("=") for x in a.mix.split(","))}
             mix["other"] = max(0.0, 1 - sum(v for k, v in mix.items() if k != "other"))
-        probs = {k: float(v) for k, v in (x.rsplit("=", 1) for x in a.p)}
+        probs = dict(PESSIMISTIC_P) if a.pessimistic else {}
+        probs.update({k: float(v) for k, v in (x.rsplit("=", 1) for x in a.p)})
         plan(claims, a.monthly_spend, a.order.split(","), mix, probs)
         return 0
 

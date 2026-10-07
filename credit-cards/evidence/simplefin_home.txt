@@ -1,0 +1,26 @@
+URL: https://beta-bridge.simplefin.org/
+STATUS: 200
+
+SimpleFIN Bridge
+Home
+Sign in
+Connect to your bank
+
+The SimpleFIN Bridge lets you securely share your financial transaction data with apps. Connect up to 25 institutions and 25 apps for either:
+
+$1.50 + tax per month, or
+$15.00 + tax per year
+Get started
+Developers
+
+Easily integrate financial transactions into your app. Check out the Developer guide to learn more.
+
+Supported institutions
+Developer guide
+Our mission
+Terms of Use
+Privacy
+Security
+Contact us
+
+Copyright © SimpleFIN

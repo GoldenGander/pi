@@ -27,12 +27,12 @@ Read `STRATEGY.md` first. All card terms were re-read from issuer pages (headles
 Resolved: Wells Fargo bonus is $100. Corrected: WF 4-month rule, BofA $2,500/qtr combined cap.
 Found: Capital One bonus cards are the "Excellent credit" tier; see STRATEGY.md.
 
-Tools: `cardtool.py validate|ev|plan`, `tracker.py status|sync|claim` (sync's live API call is untested).
+Tools: `cardtool.py validate|ev|plan`, `tracker.py status|sync|claim` (sync's live API call is untested; `test_tracker.py` uses a mock).
+Long-term plan: `ROADMAP.md`. An independent reviewer checked this work on 2026-10-07; its fixes are applied.
 Remaining work needs the user: pre-qualification checks, applying, SimpleFIN setup token, spend mix.
 Safety notes below still apply.
 
 ## Safety notes
 - Claude cannot apply for cards or touch the user's bank; the user submits applications.
 - Pay balances in full every month. Never spend just to hit a minimum.
-- A one-time rent payment through a payment service (about 2.5-3% fee) to hit a minimum might
-  be positive EV; fee and issuer treatment are unverified.
+- Do not use rent-payment services or any other fee-bearing trick to reach a minimum (see STRATEGY.md).

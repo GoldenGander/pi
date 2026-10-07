@@ -1,0 +1,195 @@
+{
+  "_schema": {
+    "status": {
+      "primary_verified": "Read directly from the issuer's own page; source_url must be on an issuer domain.",
+      "secondary_reported": "Seen in a third-party article or search summary. Plausible, not verified.",
+      "conflicting": "Sources disagree. See conflicts[]. Not usable until resolved.",
+      "unsourced": "From model memory, no source found. Not usable until sourced."
+    },
+    "evidence": "page_read = full page was read; search_summary = only a search-result summary was seen"
+  },
+  "retrieved": "2026-10-07",
+  "claims": [
+    {
+      "id": "wf-active-cash.bonus",
+      "card": "Wells Fargo Active Cash",
+      "field": "welcome_bonus",
+      "value": {"amount": 100, "min_spend": 500, "window_days": 90},
+      "status": "conflicting",
+      "evidence": "search_summary",
+      "source_url": "https://awardwallet.com/credit-cards/wells-fargo-rewards/active-cash-card-offer/",
+      "conflicts": [
+        {"value": {"amount": 200, "min_spend": 500, "window_days": 90}, "source_url": "https://www.fool.com/money/credit-cards/articles/get-2-back-on-everything-and-a-200-bonus-with-the-wells-fargo-active-cash-card-2"}
+      ],
+      "notes": "Earlier in this conversation $200 was stated as fact. Newer-looking sources say $100; the $200 article may be stale. Needs wellsfargo.com."
+    },
+    {
+      "id": "wf-active-cash.rewards",
+      "card": "Wells Fargo Active Cash",
+      "field": "base_rate",
+      "value": 0.02,
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://www.creditcards.com/reviews/wells-fargo-active-cash-card-review/"
+    },
+    {
+      "id": "wf-active-cash.eligibility",
+      "card": "Wells Fargo Active Cash",
+      "field": "bonus_restriction",
+      "value": "No bonus if you hold or opened Active Cash in the last 48 months; no second Wells Fargo consumer card if one opened in the last 6 months.",
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://www.fool.com/money/credit-cards/wells-fargo/guides/wells-fargo-card-application-rules/"
+    },
+    {
+      "id": "chase-flex.bonus",
+      "card": "Chase Freedom Flex",
+      "field": "welcome_bonus",
+      "value": {"amount": 250, "min_spend": 500, "window_days": 90},
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://upgradedpoints.com/credit-cards/chase-freedom-unlimited-card-vs-freedom-flex-card/"
+    },
+    {
+      "id": "chase-flex.rewards",
+      "card": "Chase Freedom Flex",
+      "field": "base_rate",
+      "value": 0.01,
+      "status": "unsourced",
+      "evidence": "none",
+      "source_url": null,
+      "notes": "5% rotating categories (activation required) is secondary_reported at https://upgradedpoints.com/news/chase-freedom-5x-categories/; the 1% base rate is from model memory. Q4 2026 categories not yet read."
+    },
+    {
+      "id": "chase.5-24",
+      "card": "Chase (all)",
+      "field": "application_rule",
+      "value": "Likely denied if 5+ credit cards opened across all issuers in the last 24 months.",
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://upgradedpoints.com/credit-cards/chase-freedom-unlimited-card-vs-freedom-flex-card/"
+    },
+    {
+      "id": "chase-unlimited.bonus",
+      "card": "Chase Freedom Unlimited",
+      "field": "welcome_bonus",
+      "value": {"amount": 200, "min_spend": 500, "window_days": 90},
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://upgradedpoints.com/credit-cards/chase-freedom-unlimited-card-vs-freedom-flex-card/"
+    },
+    {
+      "id": "chase-unlimited.rewards",
+      "card": "Chase Freedom Unlimited",
+      "field": "base_rate",
+      "value": 0.015,
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://www.fool.com/money/credit-cards/articles/best-no-annual-fee-credit-cards-available-this-week-jan-16-2026",
+      "notes": "Source article is dated Jan 2026; also lists 3% dining/drugstores."
+    },
+    {
+      "id": "capone-savor.bonus",
+      "card": "Capital One Savor",
+      "field": "welcome_bonus",
+      "value": {"amount": 200, "min_spend": 500, "window_days": 90},
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://www.nerdwallet.com/credit-cards/news/capital-one-june-2026-bonuses-savor-and-student-cards",
+      "notes": "Source dated June 2026 and may describe a limited-time offer."
+    },
+    {
+      "id": "capone-savor.rewards",
+      "card": "Capital One Savor",
+      "field": "base_rate",
+      "value": 0.01,
+      "status": "unsourced",
+      "evidence": "none",
+      "source_url": null,
+      "notes": "Base rate, 3% dining/groceries/entertainment, and annual fee all from model memory. Search summaries said only '1-8% cash back'."
+    },
+    {
+      "id": "capone.eligibility",
+      "card": "Capital One (Savor, Quicksilver)",
+      "field": "bonus_restriction",
+      "value": "No bonus if you received a new-cardmember bonus on the same product in the past 48 months.",
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://www.nerdwallet.com/credit-cards/news/capital-one-june-2026-bonuses-savor-and-student-cards"
+    },
+    {
+      "id": "boa-custom-cash.bonus",
+      "card": "Bank of America Customized Cash Rewards",
+      "field": "welcome_bonus",
+      "value": {"amount": 200, "min_spend": 1000, "window_days": 90},
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://churncards.com/cards/boa-customized-cash"
+    },
+    {
+      "id": "boa-custom-cash.rewards",
+      "card": "Bank of America Customized Cash Rewards",
+      "field": "base_rate",
+      "value": 0.01,
+      "status": "unsourced",
+      "evidence": "none",
+      "source_url": null,
+      "notes": "6% category rate for the first year is secondary_reported (churncards.com, search summary). The spending cap on the 3%/6% category (I believed $2,500 per quarter combined with grocery) and the 1% base rate are from model memory. The $385 year-1 estimate given in chat depended on that cap."
+    },
+    {
+      "id": "boa.2-3-4",
+      "card": "Bank of America (all)",
+      "field": "application_rule",
+      "value": "Max 2 new cards per 2 months, 3 per 12 months, 4 per 24 months.",
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://awardwallet.com/credit-cards/bank-america-234-policy/"
+    },
+    {
+      "id": "citi-double-cash.bonus",
+      "card": "Citi Double Cash",
+      "field": "welcome_bonus",
+      "value": {"amount": 200, "min_spend": 1500, "window_days": 180},
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://www.cardsandpoints.com/citi-double-cash-offer/"
+    },
+    {
+      "id": "citi-double-cash.rewards",
+      "card": "Citi Double Cash",
+      "field": "base_rate",
+      "value": 0.02,
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://www.fool.com/money/credit-cards/articles/best-no-annual-fee-credit-cards-available-this-week-jan-16-2026"
+    },
+    {
+      "id": "citi.eligibility",
+      "card": "Citi Double Cash",
+      "field": "bonus_restriction",
+      "value": "No bonus if a Double Cash bonus (or a converted card's bonus) was earned in the last 48 months.",
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://wallethub.com/answers/cc/citi-double-cash-sign-up-bonus-rules-2140894963/"
+    },
+    {
+      "id": "simplefin.price",
+      "card": "SimpleFIN Bridge",
+      "field": "price_per_month_usd",
+      "value": 1.5,
+      "status": "secondary_reported",
+      "evidence": "search_summary",
+      "source_url": "https://github.com/duplaja/actual-simplefin-sync"
+    },
+    {
+      "id": "simplefin.api",
+      "card": "SimpleFIN Bridge",
+      "field": "protocol_details",
+      "value": "Setup token -> claim URL -> Access URL with basic auth; GET /accounts with start-date/end-date; ~90 days history; ~24 requests/day.",
+      "status": "unsourced",
+      "evidence": "none",
+      "source_url": null,
+      "notes": "From model memory. Verify against the SimpleFIN protocol docs before writing the sync script. Founders FCU support also unconfirmed."
+    }
+  ]
+}

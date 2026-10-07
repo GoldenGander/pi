@@ -6,59 +6,627 @@
       "conflicting": "Sources disagree. See conflicts[]. Not usable until resolved.",
       "unsourced": "From model memory, no source found. Not usable until sourced."
     },
-    "evidence": "page_read = full page was read; search_summary = only a search-result summary was seen"
+    "evidence": "page_read = full page was read; search_summary = only a search-result summary was seen",
+    "quote": "primary_verified claims carry an exact quote (whitespace-normalised) that cardtool.py checks against evidence_file.",
+    "evidence_file": "Saved page text (rendered with headless Chromium) under credit-cards/evidence/."
   },
   "retrieved": "2026-10-07",
   "claims": [
     {
+      "id": "chase-flex.bonus",
+      "card": "Chase Freedom Flex",
+      "field": "welcome_bonus",
+      "value": {
+        "amount": 250,
+        "min_spend": 500,
+        "window_days": 90
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/chase_freedom_flex.txt",
+      "quote": "Earn a $250 bonus after you spend $500 on purchases in the first 3 months from account opening.",
+      "notes": "Marked LIMITED-TIME OFFER; page shows $200 struck through and $250 as the current amount (confirmed by screenshot). Expect it to revert to $200."
+    },
+    {
+      "id": "chase-flex.rates",
+      "card": "Chase Freedom Flex",
+      "field": "rates",
+      "value": {
+        "base": 0.01,
+        "categories": {
+          "rotating": 0.05,
+          "dining": 0.03,
+          "drugstores": 0.03
+        },
+        "rotating_cap_per_quarter": 1500,
+        "activation_required": true
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/chase_freedom_flex.txt",
+      "quote": "Earn 5% cash back on up to $1,500 in rotating categories each quarter you activate. Plus, earn 5% back on travel purchased through Chase Travel, 3% on dining including takeout and drugstores, and 1% on all other purchases."
+    },
+    {
+      "id": "chase-flex.q4-2026",
+      "card": "Chase Freedom Flex",
+      "field": "rotating_categories",
+      "value": {
+        "Q4-2026": [
+          "groceries (excl. Walmart, Target)",
+          "dining",
+          "American Red Cross"
+        ],
+        "Q1-2027": [
+          "groceries (excl. Walmart, Target)",
+          "streaming"
+        ]
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/chase_freedom_flex.txt",
+      "quote": "OCT-DEC 2026 CURRENT QUARTER Grocery Stores (excluding Walmart® and Target®)*",
+      "notes": "Dining listed as Q4 category on the same page; activation for Q4 opened Sept 15, 2026. Q1 2027 list from the same page."
+    },
+    {
+      "id": "chase-flex.annual-fee",
+      "card": "Chase Freedom Flex",
+      "field": "annual_fee",
+      "value": 0,
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/chase_freedom_flex.txt",
+      "quote": "You won't have to pay an annual fee† for all the great features that come with your Chase Freedom Flex® card."
+    },
+    {
+      "id": "chase-flex.eligibility",
+      "card": "Chase Freedom Flex",
+      "field": "bonus_restriction",
+      "value": "No bonus if you hold this card or received its new cardmember bonus in the past 24 months.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/chase_freedom_flex.txt",
+      "quote": "This product is available to you if you do not have this card and have not received a new cardmember bonus for this card in the past 24 months."
+    },
+    {
+      "id": "chase-unlimited.bonus",
+      "card": "Chase Freedom Unlimited",
+      "field": "welcome_bonus",
+      "value": {
+        "amount": 200,
+        "min_spend": 500,
+        "window_days": 90
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/chase_freedom_unlimited.txt",
+      "quote": "Earn a $200 bonus after you spend $500 on purchases in the first 3 months from account opening."
+    },
+    {
+      "id": "chase-unlimited.rates",
+      "card": "Chase Freedom Unlimited",
+      "field": "rates",
+      "value": {
+        "base": 0.015,
+        "categories": {
+          "dining": 0.03,
+          "drugstores": 0.03
+        }
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/chase_freedom_unlimited.txt",
+      "quote": "Earn 3% on dining at restaurants, including takeout and eligible delivery services.*",
+      "notes": "1.5% on all other purchases: see chase-unlimited.base-quote."
+    },
+    {
+      "id": "chase-unlimited.base-quote",
+      "card": "Chase Freedom Unlimited",
+      "field": "base_rate_quote",
+      "value": 0.015,
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/chase_freedom_unlimited.txt",
+      "quote": "Earn 1.5% on all other purchases.*"
+    },
+    {
+      "id": "chase-unlimited.eligibility",
+      "card": "Chase Freedom Unlimited",
+      "field": "bonus_restriction",
+      "value": "No bonus if you hold this card or received its new cardmember bonus in the past 24 months.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/chase_freedom_unlimited.txt",
+      "quote": "This product is available to you if you do not have this card and have not received a new cardmember bonus for this card in the past 24 months."
+    },
+    {
       "id": "wf-active-cash.bonus",
       "card": "Wells Fargo Active Cash",
       "field": "welcome_bonus",
-      "value": {"amount": 100, "min_spend": 500, "window_days": 90},
-      "status": "conflicting",
-      "evidence": "search_summary",
-      "source_url": "https://awardwallet.com/credit-cards/wells-fargo-rewards/active-cash-card-offer/",
-      "conflicts": [
-        {"value": {"amount": 200, "min_spend": 500, "window_days": 90}, "source_url": "https://www.fool.com/money/credit-cards/articles/get-2-back-on-everything-and-a-200-bonus-with-the-wells-fargo-active-cash-card-2"}
-      ],
-      "notes": "Earlier in this conversation $200 was stated as fact. Newer-looking sources say $100; the $200 article may be stale. Needs wellsfargo.com."
+      "value": {
+        "amount": 100,
+        "min_spend": 500,
+        "window_days": 90
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.wellsfargo.com/active-cash-credit-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/wells_fargo_active_cash.txt",
+      "quote": "To qualify for the $100 cash rewards bonus, a total of at least $500 in net purchases (purchases minus returns/credits) must post to your account within 3 months from the date your account is opened.",
+      "notes": "Resolves the earlier $100 vs $200 conflict: the issuer says $100. The $200 figure came from a stale article."
     },
     {
-      "id": "wf-active-cash.rewards",
+      "id": "wf-active-cash.rates",
       "card": "Wells Fargo Active Cash",
-      "field": "base_rate",
-      "value": 0.02,
-      "status": "secondary_reported",
-      "evidence": "search_summary",
-      "source_url": "https://www.creditcards.com/reviews/wells-fargo-active-cash-card-review/"
+      "field": "rates",
+      "value": {
+        "base": 0.02
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.wellsfargo.com/active-cash-credit-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/wells_fargo_active_cash.txt",
+      "quote": "Plus, enjoy unlimited 2% cash rewards on purchases"
+    },
+    {
+      "id": "wf-active-cash.annual-fee",
+      "card": "Wells Fargo Active Cash",
+      "field": "annual_fee",
+      "value": 0,
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.wellsfargo.com/active-cash-credit-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/wells_fargo_active_cash.txt",
+      "quote": "$0 annual fee"
     },
     {
       "id": "wf-active-cash.eligibility",
       "card": "Wells Fargo Active Cash",
       "field": "bonus_restriction",
-      "value": "No bonus if you hold or opened Active Cash in the last 48 months; no second Wells Fargo consumer card if one opened in the last 6 months.",
-      "status": "secondary_reported",
-      "evidence": "search_summary",
-      "source_url": "https://www.fool.com/money/credit-cards/wells-fargo/guides/wells-fargo-card-application-rules/"
+      "value": "No intro offers/bonus if you have the card or opened one in the last 48 months (even if closed). May be denied another Wells Fargo-branded consumer card if one was opened in the last 4 months.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.wellsfargo.com/active-cash-credit-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/wells_fargo_active_cash.txt",
+      "quote": "or opened one within the last 48 months from the date of the application",
+      "notes": "The earlier ledger said 6 months for the second-card rule; the issuer page says 4 months."
     },
     {
-      "id": "chase-flex.bonus",
-      "card": "Chase Freedom Flex",
+      "id": "wf-active-cash.4-month-rule",
+      "card": "Wells Fargo Active Cash",
+      "field": "application_rule",
+      "value": "May not qualify for an additional Wells Fargo-branded consumer card if one was opened in the last 4 months.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.wellsfargo.com/active-cash-credit-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/wells_fargo_active_cash.txt",
+      "quote": "You may not qualify for an additional Wells Fargo-branded consumer credit card if you have opened a Wells Fargo-branded consumer credit card in the last 4 months."
+    },
+    {
+      "id": "citi-double-cash.bonus",
+      "card": "Citi Double Cash",
       "field": "welcome_bonus",
-      "value": {"amount": 250, "min_spend": 500, "window_days": 90},
-      "status": "secondary_reported",
-      "evidence": "search_summary",
-      "source_url": "https://upgradedpoints.com/credit-cards/chase-freedom-unlimited-card-vs-freedom-flex-card/"
+      "value": {
+        "amount": 200,
+        "min_spend": 1500,
+        "window_days": 180
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.citi.com/credit-cards/citi-double-cash-credit-card",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/citi_double_cash.txt",
+      "quote": "Earn $200 cash back bonus after spending $1,500 on purchases in the first 6 months of account opening"
     },
     {
-      "id": "chase-flex.rewards",
-      "card": "Chase Freedom Flex",
-      "field": "base_rate",
+      "id": "citi-double-cash.rates",
+      "card": "Citi Double Cash",
+      "field": "rates",
+      "value": {
+        "base": 0.02
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.citi.com/credit-cards/citi-double-cash-credit-card",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/citi_double_cash.txt",
+      "quote": "Earn unlimited 1% cash back when you buy, plus an additional 1% as you pay, on every purchase.",
+      "notes": "The second 1% is earned as you pay the bill; effectively 2% only if you pay."
+    },
+    {
+      "id": "citi-double-cash.annual-fee",
+      "card": "Citi Double Cash",
+      "field": "annual_fee",
+      "value": 0,
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.citi.com/credit-cards/citi-double-cash-credit-card",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/citi_double_cash.txt",
+      "quote": "Annual Fee – None."
+    },
+    {
+      "id": "citi-double-cash.eligibility",
+      "card": "Citi Double Cash",
+      "field": "bonus_restriction",
+      "value": "No bonus if a Double Cash new account bonus was received (or a converted card's bonus) in the past 48 months.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.citi.com/credit-cards/citi-double-cash-credit-card",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/citi_double_cash.txt",
+      "quote": "Bonus ThankYou® Points are not available if you have received a new account bonus for a Citi Double Cash account in the past 48 months"
+    },
+    {
+      "id": "capone-savor.bonus",
+      "card": "Capital One Savor",
+      "field": "welcome_bonus",
+      "value": {
+        "amount": 200,
+        "min_spend": 500,
+        "window_days": 90
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/savor/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_savor.txt",
+      "quote": "Earn a one-time $200 cash bonus once you spend $500 on purchases within the first 3 months from account opening"
+    },
+    {
+      "id": "capone-savor.rates",
+      "card": "Capital One Savor",
+      "field": "rates",
+      "value": {
+        "base": 0.01,
+        "categories": {
+          "groceries": 0.03,
+          "dining": 0.03,
+          "entertainment": 0.03,
+          "streaming": 0.03
+        }
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/savor/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_savor.txt",
+      "quote": "Earn unlimited 3% cash back at grocery stores (excluding superstores like Walmart® and Target®), on dining, entertainment and popular streaming services."
+    },
+    {
+      "id": "capone-savor.base-quote",
+      "card": "Capital One Savor",
+      "field": "base_rate_quote",
       "value": 0.01,
-      "status": "unsourced",
-      "evidence": "none",
-      "source_url": null,
-      "notes": "5% rotating categories (activation required) is secondary_reported at https://upgradedpoints.com/news/chase-freedom-5x-categories/; the 1% base rate is from model memory. Q4 2026 categories not yet read."
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/savor/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_savor.txt",
+      "quote": "Earn unlimited 1% cash back on all other purchases"
+    },
+    {
+      "id": "capone-savor.annual-fee",
+      "card": "Capital One Savor",
+      "field": "annual_fee",
+      "value": 0,
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/savor/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_savor.txt",
+      "quote": "$0 annual fee"
+    },
+    {
+      "id": "capone-savor.eligibility",
+      "card": "Capital One Savor",
+      "field": "bonus_restriction",
+      "value": "No bonus if you received a new cardmember bonus for this product in the past 48 months.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/savor/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_savor.txt",
+      "quote": "Existing or previous cardmembers are not eligible for this bonus if they have received a new cardmember bonus for this product in the past 48 months."
+    },
+    {
+      "id": "capone-savor.credit-tier",
+      "card": "Capital One Savor",
+      "field": "credit_tier",
+      "value": "Capital One labels this card 'Credit Level: EXCELLENT'.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/savor/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_savor.txt",
+      "quote": "Credit Level: EXCELLENT",
+      "notes": "Capital One sells a separate 'Savor Rewards for Good Credit' version; see capone.good-credit-tier."
+    },
+    {
+      "id": "capone-quicksilver.bonus",
+      "card": "Capital One Quicksilver",
+      "field": "welcome_bonus",
+      "value": {
+        "amount": 200,
+        "min_spend": 500,
+        "window_days": 90
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/quicksilver/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_quicksilver.txt",
+      "quote": "as a one-time cash bonus once you spend $500 within 3 months from account opening"
+    },
+    {
+      "id": "capone-quicksilver.rates",
+      "card": "Capital One Quicksilver",
+      "field": "rates",
+      "value": {
+        "base": 0.015
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/quicksilver/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_quicksilver.txt",
+      "quote": "Earn unlimited 1.5% cash back on every purchase."
+    },
+    {
+      "id": "capone-quicksilver.annual-fee",
+      "card": "Capital One Quicksilver",
+      "field": "annual_fee",
+      "value": 0,
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/quicksilver/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_quicksilver.txt",
+      "quote": "$0 Annual Fee"
+    },
+    {
+      "id": "capone-quicksilver.eligibility",
+      "card": "Capital One Quicksilver",
+      "field": "bonus_restriction",
+      "value": "No bonus if you received a new cardmember bonus for this product in the past 48 months.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/quicksilver/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_quicksilver.txt",
+      "quote": "Existing or previous cardmembers are not eligible for this product if they have received a new cardmember bonus for this product in the past 48 months."
+    },
+    {
+      "id": "capone-quicksilver.credit-tier",
+      "card": "Capital One Quicksilver",
+      "field": "credit_tier",
+      "value": "Capital One labels this card 'Credit Level: EXCELLENT'.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/quicksilver/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_quicksilver.txt",
+      "quote": "Credit Level: EXCELLENT"
+    },
+    {
+      "id": "capone.good-credit-tier",
+      "card": "Capital One Quicksilver",
+      "field": "good_credit_version",
+      "value": "Capital One lists a 'Quicksilver Rewards for Good Credit' and 'Savor Rewards for Good Credit' with $0 annual fee and no cash bonus shown.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/cash-back/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_card_tiers.txt",
+      "quote": "Good Credit More details Quicksilver Rewards for Good Credit $0 annual fee 1.5% cash back on every purchase Check My Eligibility",
+      "notes": "The $200 bonus is shown only on the Excellent-Credit versions."
+    },
+    {
+      "id": "capone.prequal",
+      "card": "Capital One Quicksilver",
+      "field": "prequalification",
+      "value": "Capital One offers an eligibility check that it says has no credit score impact.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/quicksilver/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_quicksilver.txt",
+      "quote": "Checking your eligibility lets you see offers in as little as 90 seconds with no credit score impact."
+    },
+    {
+      "id": "boa-custom-cash.bonus",
+      "card": "Bank of America Customized Cash Rewards",
+      "field": "welcome_bonus",
+      "value": {
+        "amount": 200,
+        "min_spend": 1000,
+        "window_days": 90
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/boa_customized_cash.txt",
+      "quote": "Online $200 cash rewards bonus after making at least $1,000 in purchases in the first 90 days of your account opening"
+    },
+    {
+      "id": "boa-custom-cash.rates",
+      "card": "Bank of America Customized Cash Rewards",
+      "field": "rates",
+      "value": {
+        "base": 0.01,
+        "categories": {
+          "choice": 0.06,
+          "grocery_wholesale": 0.02
+        },
+        "choice_rate_after_first_year": 0.03,
+        "combined_cap_per_quarter": 2500
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/boa_customized_cash.txt",
+      "quote": "Earn 6% and 2% cash back on the first $2,500 in combined purchases each quarter in the choice category, and at grocery stores and wholesale clubs, then earn unlimited 1% thereafter. After the 3% first-year bonus offer ends, you will earn 3% and 2% cash back on these purchases up to the quarterly maximum.",
+      "notes": "Choice categories: gas/EV charging; online shopping incl. cable/internet/phone/streaming; dining; travel; drug stores; home improvement/furnishings. This replaces the earlier unsourced cap claim: the cap is $2,500 per quarter COMBINED across choice and grocery."
+    },
+    {
+      "id": "boa-custom-cash.base-quote",
+      "card": "Bank of America Customized Cash Rewards",
+      "field": "base_rate_quote",
+      "value": 0.01,
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/boa_customized_cash.txt",
+      "quote": "Unlimited 1% cash back on all other purchases"
+    },
+    {
+      "id": "boa-custom-cash.annual-fee",
+      "card": "Bank of America Customized Cash Rewards",
+      "field": "annual_fee",
+      "value": 0,
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/boa_customized_cash.txt",
+      "quote": "No annual fee"
+    },
+    {
+      "id": "discover-it.match",
+      "card": "Discover it Cash Back",
+      "field": "welcome_bonus",
+      "value": {
+        "type": "first_year_cashback_match",
+        "amount": null
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.discover.com/credit-cards/cash-back/it-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/discover_it_cash_back.txt",
+      "quote": "Get an unlimited dollar-for-dollar match of all the cash back you earn at the end of your first year, automatically.",
+      "notes": "No minimum-spend bonus. Value = 100% of first-year cash back earned."
+    },
+    {
+      "id": "discover-it.rates",
+      "card": "Discover it Cash Back",
+      "field": "rates",
+      "value": {
+        "base": 0.01,
+        "categories": {
+          "rotating": 0.05
+        },
+        "activation_required": true
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.discover.com/credit-cards/cash-back/it-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/discover_it_cash_back.txt",
+      "quote": "Earn 5% cash back on everyday purchases at different places you shop each quarter, up to the quarterly maximum when you activate.",
+      "notes": "The page does not state the quarterly maximum; Discover's usual $1,500 is UNVERIFIED."
+    },
+    {
+      "id": "discover-it.base-quote",
+      "card": "Discover it Cash Back",
+      "field": "base_rate_quote",
+      "value": 0.01,
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.discover.com/credit-cards/cash-back/it-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/discover_it_cash_back.txt",
+      "quote": "Plus, earn 1% cash back on all other purchases."
+    },
+    {
+      "id": "discover-it.annual-fee",
+      "card": "Discover it Cash Back",
+      "field": "annual_fee",
+      "value": 0,
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.discover.com/credit-cards/cash-back/it-card/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/discover_it_cash_back.txt",
+      "quote": "No annual fee"
+    },
+    {
+      "id": "discover-it.credit-tier",
+      "card": "Discover it Cash Back",
+      "field": "credit_tier",
+      "value": "Capital One's card chooser lists Discover it Cash Back under 'Excellent Credit'.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://www.capitalone.com/credit-cards/cash-back/",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/capital_one_card_tiers.txt",
+      "quote": "Excellent Credit More details Discover it Cash Back"
+    },
+    {
+      "id": "chase-rise.rates",
+      "card": "Chase Freedom Rise",
+      "field": "rates",
+      "value": {
+        "base": 0.015
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/rise",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/chase_freedom_rise.txt",
+      "quote": "Establish credit and earn 1.5% cash back on all purchases*"
+    },
+    {
+      "id": "chase-rise.approval-hint",
+      "card": "Chase Freedom Rise",
+      "field": "approval_hint",
+      "value": "Chase says having at least $250 in Chase checking or savings increases approval chances.",
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/rise",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/chase_freedom_rise.txt",
+      "quote": "Having at least $250 in Chase checking or savings accounts increases your chances of being approved."
+    },
+    {
+      "id": "chase-rise.offer",
+      "card": "Chase Freedom Rise",
+      "field": "welcome_bonus",
+      "value": {
+        "amount": 25,
+        "type": "statement_credit_for_autopay"
+      },
+      "status": "primary_verified",
+      "evidence": "page_read",
+      "source_url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/rise",
+      "retrieved": "2026-10-07",
+      "evidence_file": "evidence/chase_freedom_rise.txt",
+      "quote": "Earn a $25 statement credit when you sign up for automatic payments within the first three months of opening your account and remain enrolled for at least 90 days."
     },
     {
       "id": "chase.5-24",
@@ -67,74 +635,9 @@
       "value": "Likely denied if 5+ credit cards opened across all issuers in the last 24 months.",
       "status": "secondary_reported",
       "evidence": "search_summary",
-      "source_url": "https://upgradedpoints.com/credit-cards/chase-freedom-unlimited-card-vs-freedom-flex-card/"
-    },
-    {
-      "id": "chase-unlimited.bonus",
-      "card": "Chase Freedom Unlimited",
-      "field": "welcome_bonus",
-      "value": {"amount": 200, "min_spend": 500, "window_days": 90},
-      "status": "secondary_reported",
-      "evidence": "search_summary",
-      "source_url": "https://upgradedpoints.com/credit-cards/chase-freedom-unlimited-card-vs-freedom-flex-card/"
-    },
-    {
-      "id": "chase-unlimited.rewards",
-      "card": "Chase Freedom Unlimited",
-      "field": "base_rate",
-      "value": 0.015,
-      "status": "secondary_reported",
-      "evidence": "search_summary",
-      "source_url": "https://www.fool.com/money/credit-cards/articles/best-no-annual-fee-credit-cards-available-this-week-jan-16-2026",
-      "notes": "Source article is dated Jan 2026; also lists 3% dining/drugstores."
-    },
-    {
-      "id": "capone-savor.bonus",
-      "card": "Capital One Savor",
-      "field": "welcome_bonus",
-      "value": {"amount": 200, "min_spend": 500, "window_days": 90},
-      "status": "secondary_reported",
-      "evidence": "search_summary",
-      "source_url": "https://www.nerdwallet.com/credit-cards/news/capital-one-june-2026-bonuses-savor-and-student-cards",
-      "notes": "Source dated June 2026 and may describe a limited-time offer."
-    },
-    {
-      "id": "capone-savor.rewards",
-      "card": "Capital One Savor",
-      "field": "base_rate",
-      "value": 0.01,
-      "status": "unsourced",
-      "evidence": "none",
-      "source_url": null,
-      "notes": "Base rate, 3% dining/groceries/entertainment, and annual fee all from model memory. Search summaries said only '1-8% cash back'."
-    },
-    {
-      "id": "capone.eligibility",
-      "card": "Capital One (Savor, Quicksilver)",
-      "field": "bonus_restriction",
-      "value": "No bonus if you received a new-cardmember bonus on the same product in the past 48 months.",
-      "status": "secondary_reported",
-      "evidence": "search_summary",
-      "source_url": "https://www.nerdwallet.com/credit-cards/news/capital-one-june-2026-bonuses-savor-and-student-cards"
-    },
-    {
-      "id": "boa-custom-cash.bonus",
-      "card": "Bank of America Customized Cash Rewards",
-      "field": "welcome_bonus",
-      "value": {"amount": 200, "min_spend": 1000, "window_days": 90},
-      "status": "secondary_reported",
-      "evidence": "search_summary",
-      "source_url": "https://churncards.com/cards/boa-customized-cash"
-    },
-    {
-      "id": "boa-custom-cash.rewards",
-      "card": "Bank of America Customized Cash Rewards",
-      "field": "base_rate",
-      "value": 0.01,
-      "status": "unsourced",
-      "evidence": "none",
-      "source_url": null,
-      "notes": "6% category rate for the first year is secondary_reported (churncards.com, search summary). The spending cap on the 3%/6% category (I believed $2,500 per quarter combined with grocery) and the 1% base rate are from model memory. The $385 year-1 estimate given in chat depended on that cap."
+      "source_url": "https://upgradedpoints.com/credit-cards/chase-freedom-unlimited-card-vs-freedom-flex-card/",
+      "retrieved": "2026-10-07",
+      "notes": "Chase does not publish this rule on its pages (searched). Treated as a planning assumption only."
     },
     {
       "id": "boa.2-3-4",
@@ -143,34 +646,8 @@
       "value": "Max 2 new cards per 2 months, 3 per 12 months, 4 per 24 months.",
       "status": "secondary_reported",
       "evidence": "search_summary",
-      "source_url": "https://awardwallet.com/credit-cards/bank-america-234-policy/"
-    },
-    {
-      "id": "citi-double-cash.bonus",
-      "card": "Citi Double Cash",
-      "field": "welcome_bonus",
-      "value": {"amount": 200, "min_spend": 1500, "window_days": 180},
-      "status": "secondary_reported",
-      "evidence": "search_summary",
-      "source_url": "https://www.cardsandpoints.com/citi-double-cash-offer/"
-    },
-    {
-      "id": "citi-double-cash.rewards",
-      "card": "Citi Double Cash",
-      "field": "base_rate",
-      "value": 0.02,
-      "status": "secondary_reported",
-      "evidence": "search_summary",
-      "source_url": "https://www.fool.com/money/credit-cards/articles/best-no-annual-fee-credit-cards-available-this-week-jan-16-2026"
-    },
-    {
-      "id": "citi.eligibility",
-      "card": "Citi Double Cash",
-      "field": "bonus_restriction",
-      "value": "No bonus if a Double Cash bonus (or a converted card's bonus) was earned in the last 48 months.",
-      "status": "secondary_reported",
-      "evidence": "search_summary",
-      "source_url": "https://wallethub.com/answers/cc/citi-double-cash-sign-up-bonus-rules-2140894963/"
+      "source_url": "https://awardwallet.com/credit-cards/bank-america-234-policy/",
+      "retrieved": "2026-10-07"
     },
     {
       "id": "simplefin.price",
@@ -179,7 +656,8 @@
       "value": 1.5,
       "status": "secondary_reported",
       "evidence": "search_summary",
-      "source_url": "https://github.com/duplaja/actual-simplefin-sync"
+      "source_url": "https://github.com/duplaja/actual-simplefin-sync",
+      "retrieved": "2026-10-07"
     },
     {
       "id": "simplefin.api",
@@ -189,7 +667,7 @@
       "status": "unsourced",
       "evidence": "none",
       "source_url": null,
-      "notes": "From model memory. Verify against the SimpleFIN protocol docs before writing the sync script. Founders FCU support also unconfirmed."
+      "notes": "From model memory. Verify against the SimpleFIN protocol docs before writing the sync script."
     }
   ]
 }
